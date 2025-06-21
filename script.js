@@ -439,7 +439,7 @@ window.addEventListener('scroll', () => {
   }
   lastScroll = curr;
 });
-// ...existing code...
+
 function closeStickyBannerOrange() {
     const banner = document.getElementById('stickyBannerOrange');
     if (banner) banner.style.display = 'none';
@@ -467,3 +467,28 @@ function openInternshipModal() {
         });
     }
 })();
+
+// filepath: c:\Users\Lalu prasad Aroori\OneDrive\Desktop\project1\index.html
+function filterTutorials(level) {
+    const cards = document.querySelectorAll('.tutorial-card');
+    cards.forEach(card => {
+        if (level === 'all' || card.getAttribute('data-difficulty') === level) {
+            card.style.display = '';
+        } else {
+            card.style.display = 'none';
+        }
+    });
+
+    // Update active button styles
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.classList.remove('bg-purple-600', 'text-white');
+        btn.classList.add('bg-gray-200', 'text-gray-700');
+    });
+    if (level === 'all') {
+        document.querySelector('.filter-btn[onclick*="all"]').classList.add('bg-purple-600', 'text-white');
+        document.querySelector('.filter-btn[onclick*="all"]').classList.remove('bg-gray-200', 'text-gray-700');
+    } else {
+        document.querySelector(`.filter-btn[onclick*="${level}"]`).classList.add('bg-purple-600', 'text-white');
+        document.querySelector(`.filter-btn[onclick*="${level}"]`).classList.remove('bg-gray-200', 'text-gray-700');
+    }
+}
